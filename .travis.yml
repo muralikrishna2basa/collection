@@ -23,3 +23,15 @@ script:
 
 after_script:
   - php vendor/bin/coveralls
+  
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEYID
+  secret_access_key:
+    secure: "$SECRETACCESSKEY"
+  region: "us-west-2"  
+  app: "great"
+  env: "Great-env"
+  bucket_name: "elasticbeanstalk-us-west-2-589579859658"
+  on:
+    branch: master
